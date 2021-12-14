@@ -24,17 +24,14 @@ public class Main {
 
         FlightFilterAndDisplay.filterAndDisplay(flights,
                 "без ожидания на земле больше двух часов ",
-                new Predicate<Flight>() {
-                    @Override
-                    public boolean test(Flight flight) {
-                        List<Segment> segmentList = flight.getSegments();
-                        for (int i = 0; i < segmentList.size() - 1; i++) {
-                            if (segmentList.get(i + 1).getDepartureDate().getHour() - segmentList.get(i).getArrivalDate().getHour() > 2) {
-                                return true;
-                            }
+                flight -> {
+                    List<Segment> segmentList = flight.getSegments();
+                    for (int i = 0; i < segmentList.size() - 1; i++) {
+                        if (segmentList.get(i + 1).getDepartureDate().getHour() - segmentList.get(i).getArrivalDate().getHour() > 2) {
+                            return true;
                         }
-                        return false;
                     }
+                    return false;
                 });
     }
 }
