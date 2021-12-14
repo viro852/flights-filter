@@ -7,7 +7,6 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         List<Flight> flights = FlightBuilder.createFlights();
         System.out.println("Все перелеты" + ", количество: " + flights.size() + flights + "\n");
 
